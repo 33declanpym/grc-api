@@ -1,0 +1,287 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "An API for managing a list of tasks that need to be done. \n\nDon't forget to take it for a spin by clicking on the **Try in Client** button next to each operation! All read operations are public and don't require authentication.\n",
+    "version" : "1.1.0",
+    "title" : "Tasks API",
+    "termsOfService" : "",
+    "contact" : { }
+  },
+  "host" : "tasksapi.restlet.net",
+  "basePath" : "/v1",
+  "schemes" : [ "https" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/attractions/" : {
+      "get" : {
+        "summary" : "Load the list of Attractions",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "$ref" : "#/definitions/Attractions"
+            }
+          },
+          "400" : {
+            "description" : "Status 400",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/services/" : {
+      "get" : {
+        "summary" : "Load the list of Services",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "$ref" : "#/definitions/Attractions"
+            }
+          },
+          "400" : {
+            "description" : "Status 400",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/wards/" : {
+      "get" : {
+        "summary" : "Load the list of Wards",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "$ref" : "#/definitions/Ward"
+            }
+          },
+          "400" : {
+            "description" : "Status 400",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "HTTP_BASIC" : {
+      "description" : "All GET methods are public, meaning that *you can read all the data*. Write operations require authentication and therefore are forbidden to the general public.",
+      "type" : "basic"
+    }
+  },
+  "definitions" : {
+    "Error" : {
+      "type" : "object",
+      "required" : [ "code" ],
+      "properties" : {
+        "code" : {
+          "type" : "integer",
+          "minimum" : 400,
+          "maximum" : 599
+        },
+        "description" : {
+          "type" : "string",
+          "example" : "Bad query parameter [$size]: Invalid integer value [abc]"
+        },
+        "reasonPhrase" : {
+          "type" : "string",
+          "example" : "Bad Request"
+        }
+      },
+      "description" : "This general error structure is used throughout this API.",
+      "example" : "{\n  \"code\": 400,\n  \"description\": \"Bad query parameter [$size]: Invalid integer value [abc]\",\n  \"reasonPhrase\": \"Bad Request\"\n}"
+    },
+    "Attractions" : {
+      "type" : "object",
+      "properties" : {
+        "Sporting Fields" : {
+          "type" : "object",
+          "description" : "Object containing objects of each of the individual sporting fields, the park object is documented",
+          "properties" : {
+            "Sporting Field" : {
+              "type" : "object",
+              "properties" : {
+                "id" : {
+                  "type" : "integer"
+                },
+                "name" : {
+                  "type" : "string"
+                },
+                "description" : {
+                  "type" : "string"
+                },
+                "facilities" : {
+                  "type" : "string"
+                },
+                "rules" : {
+                  "type" : "string"
+                },
+                "map" : {
+                  "type" : "string"
+                },
+                "address" : {
+                  "type" : "string"
+                },
+                "legend" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        },
+        "Parks" : {
+          "type" : "object",
+          "description" : "Object containing objects of each of the individual parks, the park object is documented",
+          "properties" : {
+            "Park" : {
+              "type" : "object",
+              "properties" : {
+                "id" : {
+                  "type" : "integer"
+                },
+                "name" : {
+                  "type" : "string"
+                },
+                "description" : {
+                  "type" : "string"
+                },
+                "facilities" : {
+                  "type" : "string"
+                },
+                "rules" : {
+                  "type" : "string"
+                },
+                "map" : {
+                  "type" : "string"
+                },
+                "address" : {
+                  "type" : "string"
+                },
+                "legend" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Services" : {
+      "type" : "object",
+      "properties" : {
+        "Council Facilities" : {
+          "type" : "object",
+          "description" : "Object containing objects of each of the individual council facilities, the park object is documented",
+          "properties" : {
+            "Facility Type" : {
+              "type" : "object",
+              "properties" : {
+                "Facility" : {
+                  "type" : "object",
+                  "properties" : {
+                    "id" : {
+                      "type" : "integer"
+                    },
+                    "name" : {
+                      "type" : "string"
+                    },
+                    "url" : {
+                      "type" : "string"
+                    },
+                    "map" : {
+                      "type" : "string"
+                    },
+                    "phone" : {
+                      "type" : "string"
+                    },
+                    "address" : {
+                      "type" : "string"
+                    },
+                    "img" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Childcare Centres" : {
+          "type" : "object",
+          "description" : "Object containing objects of each of the childcare centres, the park object is documented",
+          "properties" : {
+            "Childcare" : {
+              "type" : "object",
+              "properties" : {
+                "id" : {
+                  "type" : "integer"
+                },
+                "name" : {
+                  "type" : "string"
+                },
+                "url" : {
+                  "type" : "string"
+                },
+                "map" : {
+                  "type" : "string"
+                },
+                "phone" : {
+                  "type" : "string"
+                },
+                "address" : {
+                  "type" : "string"
+                },
+                "img" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Ward" : {
+      "type" : "object",
+      "properties" : {
+        "Ward" : {
+          "type" : "object",
+          "properties" : {
+            "id" : {
+              "type" : "integer"
+            },
+            "name" : {
+              "type" : "string"
+            },
+            "description" : {
+              "type" : "string"
+            },
+            "councellors" : {
+              "type" : "array",
+              "description" : "**MAYBE OBJECT** Array of councellor id's for reference",
+              "items" : {
+                "type" : "integer"
+              }
+            },
+            "map" : {
+              "type" : "string"
+            },
+            "img" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
